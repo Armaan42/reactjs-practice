@@ -11,3 +11,10 @@ button {
   border-radius: 10px;
   border-style: dashed;
 }
+
+h1 {
+  margin: 20px;
+  padding: 10px 70px;
+  background-color: gainsboro;
+  width: fit-content;
+}
