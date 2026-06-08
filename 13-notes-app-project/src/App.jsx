@@ -14,6 +14,8 @@ const App = () => {
       title, details
     })
 
+    setTask(copyTask)
+
     console.log(copyTask)
 
     // console.log(title);
@@ -42,11 +44,18 @@ const App = () => {
           <button className='bg-white active:scale-98 w-full font-medium text-black px-5 py-2 rounded outline-none' >Add Notes</button>
       </form>
 
-      <div className='p-10 bg-orange-700 lg:border-l-2 lg:w-2/5 gap-10'>
+      <div className='p-5 bg-orange-700 lg:border-l-2 lg:w-2/5 gap-10'>
         <h1 className='text-2xl font-bold'>Recent Notes</h1>
-          <div className='flex flex-wrap gap-5 mt-5 overflow-auto h-full' >
-            <div className="h-52 w-45 rounded bg-white"></div>
-            <div className="h-52 w-45 rounded bg-white"></div>
+          <div className='flex flex-wrap items-start justify-start gap-5 mt-5 overflow-auto h-full' >
+            {/* <div className="h-52 w-45 rounded bg-white"></div> */}
+
+            {task.map(function(elem, idx){
+              return <div key={idx} className="h-52 w-45 text-black p-4 rounded bg-white">
+                <h3 className='leading-tight text-xl font-bold' >{elem.title}</h3>
+                <p className='mt-2 leading-tight text-gray-600'> {elem.details}</p>
+              </div>
+            })}
+
           </div>
       </div>
 
