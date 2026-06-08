@@ -1,10 +1,20 @@
 import React, { useState } from 'react'
+import { X } from 'lucide-react';
 
 const App = () => {
 
   const [title, settitle] = useState('')
   const [details, setDetails] = useState('')
   const [task, setTask] = useState([])
+
+  const deleteNote = (idx) => {
+    const copyTask = [...task]
+
+    copyTask.splice(idx, 1)
+
+    setTask(copyTask)
+
+  }
 
   const submitHandler = (e) => {
     e.preventDefault()
@@ -46,11 +56,14 @@ const App = () => {
 
       <div className='p-5 bg-orange-700 lg:border-l-2 lg:w-2/5 gap-10'>
         <h1 className='text-2xl font-bold'>Recent Notes</h1>
-          <div className='flex flex-wrap items-start justify-start gap-5 mt-5 overflow-auto h-full' >
+          <div className='flex flex-wrap items-start justify-start gap-5 mt-5 overflow-auto h-[90%]' >
             {/* <div className="h-52 w-45 rounded bg-white"></div> */}
 
             {task.map(function(elem, idx){
-              return <div key={idx} className="h-52 w-45 text-black p-4 rounded bg-white">
+              return <div key={idx} className="h-52 w-45 relative text-black p-4 rounded bg-white">
+                <h2 onClick={() => {
+                  deleteNote(idx)
+                }} className=' cursor-pointer active:scale-95 absolute top-5 right-5 bg-red-500 p-1 rounded-full text-xs text-white' ><X /></h2>
                 <h3 className='leading-tight text-xl font-bold' >{elem.title}</h3>
                 <p className='mt-2 leading-tight text-gray-600'> {elem.details}</p>
               </div>
