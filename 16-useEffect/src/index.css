@@ -8,11 +8,14 @@
 button {
   padding: 10px;
   margin: 10px;
+  border-radius: 10px;
+  border-style: dashed;
 }
 
 h1 {
-  background-color: antiquewhite;
   padding: 10px;
+  background-color: antiquewhite;
   margin: 10px;
-  max-width: max-content;
+  max-width:max-content;
+  border-radius: 10px;
 }
