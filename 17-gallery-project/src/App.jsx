@@ -15,7 +15,7 @@ const App = () => {
     getData();
   },[index])
 
-  let printUserData = <h2>No Data Available</h2>;
+  let printUserData = <h2 className='text-gray-400 text-lg absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2' >Loading</h2>;
 
   if(userData.length > 0){
     printUserData = userData.map(function(elem, idx) {
@@ -41,7 +41,7 @@ const App = () => {
         }}
         >Get Data</button> */}
 
-        <h1 className='text-5xl' >{index}</h1>
+        {/* <h1 className='text-5xl' >{index}</h1> */}
         <div className='flex flex-wrap gap-4 py-5' >
           {printUserData}
         </div>
@@ -53,13 +53,15 @@ const App = () => {
 
             if(index > 1){
               setIndex(index-1)
+              setusersData([])
             }
             
           }} >Prev</button>
           
           {/* next button  */}
            <button className='bg-amber-300 active:scale-95 cursor-pointer font-medium text-black px-4 py-2 rounded-xl' onClick={()=>{
-            setIndex(index+1)        
+            setIndex(index+1)
+            setusersData([])        
            }} >Next</button>
 
         </div>
