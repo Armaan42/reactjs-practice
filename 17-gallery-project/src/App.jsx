@@ -1,9 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
+import axios from 'axios'
 
 const App = () => {
+
+  const [userData, setUserData] = useState([])
+
+  const getData = async () => {
+    const response = await axios.get('https://picsum.photos/v2/list?page=3&limit=30')
+    setUserData(response.data)
+  }
+
+  let printUserData = 'No user available';
+
+  if(userData.length > 0){
+    printUserData = userData.map(function(elem, idx) {
+      return <div>
+
+          <div className='h-40 w-44 rounded-xl overflow-hidden' >
+            <img className='h-full w-full object-cover' src={elem.download_url} alt="" />
+        </div>
+        <h2>{elem.author}</h2>
+      </div>
+    })
+  }
+
   return (
-    <div>
-      App
+    <div className='h-screen overflow-auto bg-[#4d4d4d] p-5 text-white w-screen ' >
+
+      <button className='px-5 py-2 active:scale-95 bg-green-600 rounded' 
+        onClick={()=>{
+          getData()
+        }}
+        >Get Data</button>
+
+        <div className='flex flex-wrap gap-4' >
+          {printUserData}
+        </div>
+
     </div>
   )
 }
