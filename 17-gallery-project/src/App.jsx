@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
 const App = () => {
@@ -10,16 +10,23 @@ const App = () => {
     setUserData(response.data)
   }
 
+  useEffect(function() {
+    getData();
+  },[])
+
   let printUserData = 'No user available';
 
   if(userData.length > 0){
     printUserData = userData.map(function(elem, idx) {
-      return <div>
+      return <div key={idx} >
 
+        <a href={elem.url} target='_blank'>
           <div className='h-40 w-44 rounded-xl overflow-hidden' >
             <img className='h-full w-full object-cover' src={elem.download_url} alt="" />
-        </div>
-        <h2>{elem.author}</h2>
+          </div>
+          <h2 className='text-xm font-bold mt-3' >{elem.author}</h2>
+        </a>
+        
       </div>
     })
   }
@@ -27,11 +34,11 @@ const App = () => {
   return (
     <div className='h-screen overflow-auto bg-[#4d4d4d] p-5 text-white w-screen ' >
 
-      <button className='px-5 py-2 active:scale-95 bg-green-600 rounded' 
+      {/* <button className='px-5 py-2 active:scale-95 bg-green-600 rounded' 
         onClick={()=>{
           getData()
         }}
-        >Get Data</button>
+        >Get Data</button> */}
 
         <div className='flex flex-wrap gap-4' >
           {printUserData}
