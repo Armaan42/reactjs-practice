@@ -8,6 +8,7 @@ import Product from './pages/Product'
 import Men from './pages/Men'
 import Women from './pages/Women'
 import NotFound from './pages/NotFound'
+import Kids from './pages/Kids'
 
 const App = () => {
   return (
@@ -19,10 +20,12 @@ const App = () => {
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} /> 
-        <Route path='/Product' element={<Product />} />   
 
-        <Route path='/Product/men' element={<Men />} />
-        <Route path='/Product/women' element={<Women />} />
+        <Route path='/Product' element={<Product />}>
+          <Route path='men' element={<Men />} />
+          <Route path='women' element={<Women />} />
+          <Route path='kids' element={<Kids />} />
+        </Route>   
 
         <Route path='*' element={<NotFound />} />
 
