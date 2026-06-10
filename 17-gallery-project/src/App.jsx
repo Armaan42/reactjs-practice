@@ -14,7 +14,7 @@ const App = () => {
     getData();
   },[])
 
-  let printUserData = 'No user available';
+  let printUserData = <h2>No Data Available</h2>;
 
   if(userData.length > 0){
     printUserData = userData.map(function(elem, idx) {
