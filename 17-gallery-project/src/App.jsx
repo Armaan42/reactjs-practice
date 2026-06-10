@@ -33,7 +33,7 @@ const App = () => {
   }
 
   return (
-    <div className='h-screen overflow-auto bg-[#4d4d4d] p-5 text-white w-screen ' >
+    <div className='h-screen overflow-auto bg-[#1e1e1e] p-5 text-white w-screen ' >
 
       {/* <button className='px-5 py-2 active:scale-95 bg-green-600 rounded' 
         onClick={()=>{
@@ -46,10 +46,10 @@ const App = () => {
           {printUserData}
         </div>
 
-        <div className='flex justify-center item-center p-5 gap-5' >
+        <div className='flex justify-center items-center p-5 gap-5' >
           
           {/* prev button  */}
-          <button className='bg-amber-300 active:scale-95 cursor-pointer font-medium text-black px-4 py-2 rounded-xl' onClick={()=>{
+          <button className='bg-amber-300 active:scale-95 cursor-pointer font-medium text-black px-4 py-2 rounded-xl' style={{opacity: index == 1 ? 0.5 : 1}} onClick={()=>{
 
             if(index > 1){
               setIndex(index-1)
@@ -58,6 +58,8 @@ const App = () => {
             
           }} >Prev</button>
           
+          <h4>Page {index}</h4>
+
           {/* next button  */}
            <button className='bg-amber-300 active:scale-95 cursor-pointer font-medium text-black px-4 py-2 rounded-xl' onClick={()=>{
             setIndex(index+1)
